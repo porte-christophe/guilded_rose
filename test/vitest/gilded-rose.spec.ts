@@ -56,4 +56,28 @@ describe('Gilded Rose', () => {
 
     expect(gildedRose.updateQuality()).toStrictEqual([item2]);
   });
+  it("Backstage passes  to a TAFKAL80ETC concert, comme le Aged Brie, augmente sa qualité (quality) plus le temps passe (sellIn) ; La qualité augmente de 2 quand il reste 10 jours ou moins et de 3 quand il reste 5 jours ou moins, mais la qualité tombe à 0 après le concert.", () =>{
+    
+
+    //entre 10 et 5 jour
+    const item1 = new Item('Backstage passes to a TAFKAL80ETC concert', 10, 48);
+    const item2 = new Item('Backstage passes to a TAFKAL80ETC concert', 9, 50);
+    const gildedRose = new GildedRose([item1]);
+    expect(gildedRose.updateQuality()).toStrictEqual([item2]);
+
+
+
+    //entre j-5 et jour j
+    const item3 = new Item('Backstage passes to a TAFKAL80ETC concert', 5, 47);
+    const item4 = new Item('Backstage passes to a TAFKAL80ETC concert', 4, 50);
+    const gildedRose1 = new GildedRose([item3]);
+    expect(gildedRose1.updateQuality()).toStrictEqual([item4]);
+
+    //post show
+    const item5 = new Item('Backstage passes to a TAFKAL80ETC concert', 0, 48);
+    const item6 = new Item('Backstage passes to a TAFKAL80ETC concert', -1, 0);
+    const gildedRose2 = new GildedRose([item5]);
+    expect(gildedRose2.updateQuality()).toStrictEqual([item6]);
+
+  });
 });
