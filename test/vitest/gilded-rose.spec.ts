@@ -90,7 +90,7 @@ describe('Gilded Rose', () => {
     expect(gildedRose.updateQuality()).toStrictEqual([item2]);
 
     //entre j-5 et jour j
-    const item3 = new Item('Backstage passes to a TAFKAL80ETC concert', 5, 47);
+    const item3 = new Item('Backstage passes to a TAFKAL80ETC concert', 5, 48);
     const item4 = new Item('Backstage passes to a TAFKAL80ETC concert', 4, 50);
     const gildedRose1 = new GildedRose([item3]);
     expect(gildedRose1.updateQuality()).toStrictEqual([item4]);

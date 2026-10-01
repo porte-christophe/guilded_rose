@@ -31,26 +31,16 @@ export class GildedRose {
     const agedBrie="Aged Brie";
 
     for (let item of this.items) {
-      if ( item.name != agedBrie && item.name != passes ) {
+      if ( item.name != agedBrie && item.name != passes && item.name != sulfuras ) {
         if (item.quality > 0) {
-          if (item.name != sulfuras) {
-            this.downQuality(item);
-          }
+          this.downQuality(item);
         }
       } else {
         if (item.quality < 50) {
           this.addQuality(item);
           if ( item.name == passes) {
-            if (item.sellIn < 11) {
-              if (item.quality < 50) {
-                this.addQuality(item);
-              }
-            }
-            if (item.sellIn < 6) {
-              if (item.quality < 50) {
-                this.addQuality(item);
-              }
-            }
+            if (item.sellIn < 11 && item.quality < 50) { this.addQuality(item); }
+            if (item.sellIn < 6 && item.quality < 50) { this.addQuality(item); }  
           }
         }
       }
